@@ -115,7 +115,8 @@ def spanningCotrees(sc,d):
     """
     
     bd = boundaryMatrix(sc,d, cochain=True)
-    coboundary_matroid = sage.all.Matroid(coboundary_matrix)
+    from sage.matroids.constructor import Matroid
+    coboundary_matroid = Matroid(coboundary_matrix)
     d_minus_one_cells = set(range(coboundary_matrix.ncols()))
     #This line uses the default Sage algorithm for finding bases of general matroids. It is not efficient.
     return [d_minus_one_cells.difference(base) for base in coboundary_matroid.bases()]
